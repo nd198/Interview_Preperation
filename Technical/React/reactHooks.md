@@ -132,7 +132,7 @@ function TitleUpdater() {
 
     **Provider Placement**: Ensure the Context.Provider is placed high enough in your component tree so that all components that need to consume its value are within its subtree.
 
-    # use memo
+  **use memo**
     useMemo is a React Hook that lets you cache the result of a calculation between re-renders.
     It helps optimize performance by preventing re-computation of values on every render if the dependencies of that calculation haven't changed.
     `const cachedValue = useMemo(calculateValue, dependencies)`
