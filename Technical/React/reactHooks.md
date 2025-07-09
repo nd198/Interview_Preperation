@@ -132,7 +132,7 @@ function TitleUpdater() {
 
     **Provider Placement**: Ensure the Context.Provider is placed high enough in your component tree so that all components that need to consume its value are within its subtree.
 
-    **use memo**
+    # use memo
     useMemo is a React Hook that lets you cache the result of a calculation between re-renders.
     It helps optimize performance by preventing re-computation of values on every render if the dependencies of that calculation haven't changed.
     `const cachedValue = useMemo(calculateValue, dependencies)`
@@ -143,8 +143,6 @@ function TitleUpdater() {
     calculateValue: The function calculating the value that you want to cache. It should be pure, should take no arguments, and should return a value of any type. React will call your function during the initial render. On next renders, React will return the same value again if the dependencies have not changed since the last render. Otherwise, it will call calculateValue, return its result, and store it so it can be reused later.
     2) A list of dependencies including every value within your component that’s used inside your calculation.
     dependencies: The list of all reactive values referenced inside of the calculateValue code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is configured for React, it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like [dep1, dep2, dep3]. React will compare each dependency with its previous value using the Object.is comparison.
-
-    
 
     On the initial render, the value you’ll get from useMemo will be the result of calling your calculation.
 
