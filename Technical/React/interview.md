@@ -29,6 +29,13 @@ Interview
     6.2) why Redux
     6.3) when to use  
     6.4) Redux toolkit
+    6.5) useContext vs Redux.
+ ● Advantage of using Redux Toolkit over Redux.
+ ● Explain Dispatcher.
+ ● Explain Reducer.
+ ● Explain slice.
+ ● Explain selector.
+ ● Explain createSlice and the configuration it takes
 
 7) Custom Hooks
     7.1) when to use it
@@ -81,3 +88,7 @@ Interview
 16) Styling    
     16.1) Tailwind
     16.2) StyleX
+
+Machin round :-
+https://www.youtube.com/watch?v=0NhaP87Pbs4&ab_channel=AkshaySaini
+

@@ -30,6 +30,11 @@ function TitleUpdater() {
   );
 }`
 
+Dependecy array
+1) If you omit the second argument entirely, the effect will run after the initial render and after every subsequent re-render of the component.
+2) When you provide an empty array (`[]`), you are telling React that your effect does not depend on any props or state from the component. Therefore, the effect will run **only once, after the initial render**, and never again.
+3) When you list props or state values inside the array, React will compare the current value of each dependency with its value from the previous render. If any of them have changed, React will re-run the effect.
+
 **useState**
   > useState is a React Hook that lets you add a state variable to your component.
   > Call useState at the top level of your component to declare a state variable.
@@ -168,4 +173,80 @@ function TitleUpdater() {
 
       If Dependencies Change Frequently: If the dependencies of your useMemo call change on almost every render, then useMemo won't provide much benefit, as the memoized function will almost always re-run. 
 
+  **useCallback** 
+    useCallback is a React Hook that lets you cache a function definition between re-renders.
+    `const cachedFn = useCallback(fn, dependencies)` 
+    `import { useCallback } from 'react';
+      function ProductPage({ productId, referrer, theme }) {
+        const handleSubmit = useCallback((orderDetails) => {
+          post('/product/' + productId + '/buy', {
+            referrer,
+            orderDetails,
+          });
+        }, [productId, referrer]);
+      }
+        // ...  
+    `
+    **You need to pass two things to useCallback:**
+      1) A function definition that you want to cache between re-renders.
+      2) A list of dependencies including every value within your component that’s used inside your function.
 
+    On the initial render, the returned function you’ll get from useCallback will be the function you passed.
+    On the following renders, React will compare the dependencies with the dependencies you passed during the previous render. If none of the dependencies have changed (compared with Object.is), useCallback will return the same function as before. Otherwise, useCallback will return the function you passed on this render.  
+    In other words, useCallback caches a function between re-renders until its dependencies change.
+
+    **When to Use useCallback:**
+    > Passing Callbacks to React.memo Components: This is the most common and important use case. If you have child components optimized with React.memo and you're passing functions as props to them, use useCallback to prevent unnecessary re-renders of the child.
+
+    > Dependencies of useEffect: If a function is part of the dependency array of a useEffect Hook, memoizing it with useCallback can prevent the useEffect callback from running more often than necessary.
+
+    > Dependencies of useMemo: Similarly, if a function is used within a useMemo calculation and is part of its dependency array, useCallback can prevent redundant re-computations.
+
+    **When NOT to Use useCallback:**
+    > For Every Function: Like useMemo, useCallback itself has an overhead. Don't use it for every function. If the component receiving the callback is not memoized (i.e., it re-renders anyway), or the function is very simple and not a dependency of other Hooks, the overhead of memoization might outweigh the benefits.
+
+    > Performance is Not an Issue: Only use useCallback when you've identified a performance problem that it can solve. Premature optimization can lead to more complex code without real benefits.
+
+    > Complex Dependencies: Managing dependencies for useCallback (and useMemo) can be tricky. Missing a dependency can lead to stale closures, and adding too many can negate the memoization benefit.
+
+  **useRef** 
+    useRef is a React Hook that lets you reference a value that’s not needed for rendering.
+    `const ref = useRef(initialValue)`
+    import { useRef } from 'react';
+
+    `function MyComponent() {
+      const intervalRef = useRef(0);
+      const inputRef = useRef(null);
+      // ...
+    }  `
+
+    **Parameters** 
+    initialValue: The value you want the ref object’s current property to be initially. It can be a value of any type. This argument is ignored after the initial render.
+
+    **Returns** 
+    useRef returns an object with a single property:
+
+    current: Initially, it’s set to the initialValue you have passed. You can later set it to something else. If you pass the ref object to React as a ref attribute to a JSX node, React will set its current property.
+    On the next renders, useRef will return the same object.
+
+    **By using a ref, you ensure that:**
+      > You can store information between re-renders (unlike regular variables, which reset on every render).
+      > Changing it does not trigger a re-render (unlike state variables, which trigger a re-render).
+      > The information is local to each copy of your component (unlike the variables outside, which are shared).
+
+      ` import { useRef } from 'react';
+
+      export default function Counter() {
+        let ref = useRef(0);
+
+        function handleClick() {
+          ref.current = ref.current + 1;
+          alert('You clicked ' + ref.current + ' times!');
+        }
+
+        return (
+          <button onClick={handleClick}>
+            Click me!
+          </button>
+        );
+      }`

@@ -1,3 +1,4 @@
+https://medium.com/@Pratik_Mane_9/solid-principles-the-superhero-framework-for-writing-unbreakable-react-code-9b7b60282c26
 # SOLID Design Principle
 The SOLID principles are a set of five design principles in object-oriented programming (OOP) that aim to make software designs more understandable, flexible, and maintainable. While initially conceived for OOP, their concepts are highly applicable to modern JavaScript development, especially in a Node.js environment where you often deal with modularity, maintainability, and scalability.
 
