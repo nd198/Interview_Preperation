@@ -13,5 +13,3 @@ https://www.eraser.io/decision-node/api-rate-limiting-strategies-token-bucket-vs
 https://www.youtube.com/watch?v=lFeYU31TnQ8&ab_channel=PiyushGarg
 
 
-**Kunbernetes**
-https://www.youtube.com/watch?v=a-nWPre5QYI&ab_channel=PiyushGarg
