@@ -16,5 +16,5 @@
         5) Arrays and objects
         6) Special types: any, never, unknown  
     **Syntax**  
-        let VariableName : type = value;
-        **Note** : TypeScript can infer types when you immediately assign a value, so you don't always need explicit annotations.   
+        `let VariableName : type = value;`
+    **Note** : TypeScript can infer types when you immediately assign a value, so you don't always need explicit annotations.   
