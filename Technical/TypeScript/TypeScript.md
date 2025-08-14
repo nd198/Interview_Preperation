@@ -1,9 +1,9 @@
 **Introduction to TypeScript**
-    > TypeScript is a superset of JavaScript, adding type safety and static checking.
-    > It's not a new language or a replacement for JavaScript, but a development tool that helps catch errors during coding rather than at runtime.
-    > All TypeScript code compiles to JavaScript, which runs in browsers or Node.js.
-    > Typscript is all about type saftey.
-    > typescript is development tool. it helps you to write better code with less problem with more scalable and maintablable code that is easily understandable and produces less error
+    1) TypeScript is a superset of JavaScript, adding type safety and static checking.
+    2) It's not a new language or a replacement for JavaScript, but a development tool that helps catch errors during coding rather than at runtime.
+    3) All TypeScript code compiles to JavaScript, which runs in browsers or Node.js.
+    4) Typscript is all about type saftey.
+    5) typescript is development tool. it helps you to write better code with less problem with more scalable and maintablable code that is easily understandable and produces less error
     **Setting Up TypeScript**
         **Two ways to install:**
             > globally for practice (using npm install -g typescript), and as a dev dependency in a project.
