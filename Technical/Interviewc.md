@@ -6,12 +6,18 @@ what is microfront end
 System design
 what service deli in microservice
 what is circuit breaker
+how two services comunicated if we don't have kafka
+CQRS patter
+trashing in microservice
 
 
 AWS questions
 cold time
 what is AWS lambda
 how much request we can send to the single resource
+deep about the lambda
+why to use that
+
 
 Node js
 what is piping

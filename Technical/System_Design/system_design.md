@@ -1,3 +1,6 @@
+**System Design**
+https://bytebytego.com/courses/system-design-interview/design-a-chat-system
+
 **Consistence hashing**
 Database SHarding
 Load balancer

@@ -166,6 +166,31 @@ https://docs.docker.com/engine/network/drivers/
     **none**: Completely isolate a container from the host and other containers.
 
 
+1) Different between container and virtual machine
+2) Docker Daemon
+3) multi stacge build and why are they imporatant
+4) Explain the relationship between a Docker Image and a Docker Container
+    > Use the classic class vs. object analogy. An Image is a blueprint—a passive, immutable, read-only template containing the application code, a runtime, libraries, and environment variables.
+    > A Container is a running instance of an image. It's the live, executable package. You can have many containers running from the same image.
+5) How do you ensure your Docker images are small and efficient?
+6) What's the difference between CMD and ENTRYPOINT in a Dockerfile? When would you use both?
+7) How should you handle secrets and sensitive configuration in Docker?
+8) How does Docker's layer caching work, and how would you structure your Dockerfile to take maximum advantage of it?
+    > How it Works: Docker builds an image by executing each instruction in the Dockerfile sequentially. After each instruction, it creates a new layer and caches it. If the instruction hasn't changed, and none of the instructions before it have changed, Docker will use the cached layer instead of re-running the instruction.
+    > Optimization Strategy: You must order your Dockerfile instructions from least frequently changing to most frequently changing.
+    > Practical Example (for a Node.js app):
+    COPY package.json ./ (Dependencies change infrequently)
+    RUN npm install (This step is only re-run when package.json changes)
+    COPY . . (Copy the rest of the source code, which changes on every build)
+9) What is container orchestration, and why is it necessary?
+    > The Problem: Running a single container is easy (docker run). But in production, you have dozens of microservices, need to manage them across multiple host machines, handle failures, scale them up and down, and manage networking between them. Doing this manually is impossible.
+    > The Solution: Container orchestrators like Kubernetes or Docker Swarm automate this. They are the "brains" of a distributed system.
+    > Key Responsibilities: Mention key features like scheduling (placing containers on hosts), service discovery, load balancing, self-healing (restarting failed containers), and scaling.    
+
+
+
+
+
 
     
 

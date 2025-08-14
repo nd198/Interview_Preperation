@@ -78,6 +78,7 @@ there are two ways to communicate between microservices
 
      
 **Saga Design pattern(managing transaction in distributed system)**
+    Ex:- flight booking
     1) Orchestrated saga : 
         preferable for simpler sagas or when you need a clear audit trail and centralized control
         Pros
