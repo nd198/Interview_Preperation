@@ -256,5 +256,45 @@ This is the most "academically correct" RESTful approach. It uses the standard A
             }
 
             next(new Error('Invalid media type in Accept header'));
-        }); `          
+        }); ` 
+
+**How Does HTTP Work 🔥**
+    **1. Privacy and Integrity**
+        > HTTP sends data in plaintext without encryption.
+        > It means someone on the public network can easily access or change the information.
+        So it’s insecure.
+    **2. Authentication**
+        > HTTP doesn’t support a mechanism to check if the server is the right one.
+        > It means someone else could pretend to be the server and steal the user's data.
+        > So it became difficult to transfer sensitive information, such as passwords or credit card numbers.
+
+**How Does HTTPS Work**
+    > Imagine HTTPS as HTTP running over an extra protocol to keep information secure.
+    > The extra protocol is called Transport Layer Security (TLS). Think of TLS as a mechanism to encrypt data sent between the client and server.
+    > TLS creates a secure connection using a process called the TLS handshake. It's used to establish an HTTPS connection when a user visits a site.
+    **Here’s how it works:**
+        > The browser sends a message to the server.
+        > It includes the list of supported cryptographic algorithms, TLS versions. And also a randomly generated string called client random.
+        > The server then responds with its TLS certificate and supported cryptographic algorithm. Besides it includes a randomly generated string called server random.
+        > Yet it’s important to confirm the server identity for authenticity. So the browser verifies the received TLS certificate with the certificate authority. Imagine the certificate authority as a trusted organization that verifies server identity.
+        > But both client and server must have the same key to encrypt session data efficiently.
+        > So the browser sends a temporary key (pre-master secret) to the server. While it’s encrypted using the server’s public key, which was taken from the TLS certificate.
+        > Yet only the private key can decrypt the data that was encrypted using a public key. So the server decrypts the received pre-master secret using its private key. Thus making this data transfer secure.
+        > Think of the public key as an email address; anybody can send messages to it. While the private key is like the inbox password, only the user with the password can read emails.
+        > Both browser and server use the pre-master secret, server random, and client random to compute the same session key.
+        > Think of the session key as a symmetric cryptographic key that can encrypt and decrypt data. It’s valid either for a set period or for as long as communication is ongoing.
+        > All future communication then gets encrypted using the session key. It means nobody can see the messages on the public network.
+        > Yet it’s necessary to check if the TLS handshake was successful.
+        > So the browser sends a finished message, which is encrypted using the session key. The server then responds with a finished message, encrypted using the session key.
+        > This marks the completion of a TLS handshake.
+        > Put simply, the TLS certificate handles authentication, while the TLS protocol handles encryption.
+        > Thus providing authenticity, confidentiality, and integrity in data transfer.
+
+**How Databases Keep Passwords Securely 🔒**
+    https://newsletter.systemdesign.one/p/how-to-store-passwords-in-database
+
+
+
+
+
 

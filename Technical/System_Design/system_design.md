@@ -1,5 +1,8 @@
 **System Design**
 https://bytebytego.com/courses/system-design-interview/design-a-chat-system
+https://www.linkedin.com/feed/update/urn:li:activity:7363998060596633600/
+https://newsletter.systemdesign.one/p/idempotent-api
+https://github.com/donnemartin/system-design-primer
 
 **Consistence hashing**
 Database SHarding

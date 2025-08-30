@@ -128,5 +128,17 @@ Scalability & Extensibility: This design is incredibly flexible. In the future, 
     The two main libraries are kafkajs and node-rdkafka.
     kafkajs is a modern, pure JavaScript client. It has no native dependencies, which makes installation very simple and reliable across different operating systems and CI/CD environments. Its API is generally considered more modern and intuitive.
     node-rdkafka is a high-performance client that is a Node.js wrapper around the battle-tested librdkafka C++ library.
-    My choice between them depends on the project's needs. For 95% of use cases, I would choose kafkajs. Its ease of use, strong community support, and avoidance of native dependency headaches make it the ideal choice for most microservices and applications. I would only consider node-rdkafka in extreme scenarios where I've benchmarked my application and found that the Kafka client itself is the bottleneck, and I need the absolute maximum throughput that the underlying C++ library can provide. The trade-off is the added complexity during setup and deployment.                   
+    My choice between them depends on the project's needs. For 95% of use cases, I would choose kafkajs. Its ease of use, strong community support, and avoidance of native dependency headaches make it the ideal choice for most microservices and applications. I would only consider node-rdkafka in extreme scenarios where I've benchmarked my application and found that the Kafka client itself is the bottleneck, and I need the absolute maximum throughput that the underlying C++ library can provide. The trade-off is the added complexity during setup and deployment. 
+
+
+**what is Zookeeper**
+    1) Zookeeper keeps a list of brokers and manages them.
+    2) Zookeeper helps in leader election for partition.
+    3) Zookeeper sends notifications about creating/deleting topics, broker up/down, etc…
+    4) Zookeeper managed an odd number of servers (1, 3, 5, 7). The cluster can't be more than 7 Zookeeper instances.
+    5) Zookeeper Cluster has a Zookeeper Leader for writing and Zookeeper Follwers for reading
+    Zookeeper does not store consumer offset since Kafka v0.10
+    6) Apache Kafka 2.x not working without Zookeeper
+    7) Kafka 3.x can work without Zookeeper (KIP-500 Kafka Raft but not for production)
+    8) Kafka 4.x no Zookeeper at all.                      
 

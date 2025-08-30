@@ -1,3 +1,23 @@
+**what is Prototype**
+    In JavaScript, a prototype is an object that acts as a blueprint or template for other objects, enabling inheritance and the sharing of properties and methods. When an object is created, it can inherit properties and methods from its prototype, promoting code reuse and efficiency. 
+    Here's how prototypes work with an example: Constructor Functions and prototype Property.
+    When a constructor function is defined in JavaScript, it automatically gets a prototype property. This prototype property is an object where you can add methods and properties that will be inherited by all instances created from that constructor function.
+
+    `function Animal(name) {
+        this.name = name;
+    }
+
+    // Adding a method to the prototype of Animal
+    Animal.prototype.speak = function() {
+        console.log(`${this.name} makes a sound.`);
+    };
+
+    const dog = new Animal("Dog");
+    const cat = new Animal("Cat");
+
+    dog.speak(); // Output: Dog makes a sound.
+    cat.speak(); // Output: Cat makes a sound.`
+
 **what is the behaviour of this in normal and arrow function**
 **Normal Functions (function keyword)**: The value of this is determined by how the function is called (the "execution context"). It's dynamic.
 **Arrow Functions (=>)**: The value of this is determined by where the function is defined (the "lexical context"). It's static and inherits this from its parent scope.

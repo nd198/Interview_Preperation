@@ -7,6 +7,9 @@ https://www.youtube.com/watch?v=rBeyHDKLVqM&ab_channel=MPrashant
 https://www.youtube.com/watch?v=XuSQU5Grv1g&t=1728s&ab_channel=KodeKloud
 https://www.youtube.com/watch?v=XuSQU5Grv1g&t=314s
 
+Deployment of MERN app
+https://www.youtube.com/watch?v=7XDeI5fyj3w&ab_channel=HiteshChoudhary
+
 **Defination**
 Kubernetes, also known as K8s, is an open source system for automating deployment, scaling, and management of containerized applications.
     > when we deploy the kubernetes we get a cluster
