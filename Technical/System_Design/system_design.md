@@ -4,6 +4,9 @@ https://www.linkedin.com/feed/update/urn:li:activity:7363998060596633600/
 https://newsletter.systemdesign.one/p/idempotent-api
 https://github.com/donnemartin/system-design-primer
 
+**low level system design**
+https://github.com/ashishps1/awesome-low-level-design
+
 **Consistence hashing**
 Database SHarding
 Load balancer

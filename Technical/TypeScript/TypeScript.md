@@ -35,8 +35,21 @@
     
     printCoord({ x: 100, y: 100 });` 
 
-    **Differences Between Type Aliases and Interfaces**:
+**Differences Between Type Aliases and Interfaces**:
     Type aliases and interfaces are very similar, and in many cases you can choose between them freely. Almost all features of an interface are available in type, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
+    **Type :** 
+    > No Declaration Merging: Type aliases cannot be declared multiple times; they must be unique within their scope.
+    > No Class Implementation: Classes cannot implement a type alias directly.
+    > More Versatile: Can describe not only object shapes but also primitives, union types, intersection types, tuples, and mapped types.
+    > Extending/Intersection: Type aliases can be combined using intersection types (&).
+    **interface:**
+    > Declaration Merging: Interfaces can be declared multiple times in the same scope, and TypeScript will merge them into a single interface. This is particularly useful for augmenting existing library types.
+    > Implementation with Classes: Interfaces can be implemented by classes, ensuring that the class adheres to a specific structure.
+    > Extending: Interfaces can extend other interfaces.
+    > Primarily for Object Shapes: Historically, interfaces were the primary way to describe object shapes.
+    **When to use which:**
+    Use interface for: Defining the shape of objects that might be extended or implemented by classes, or when you need declaration merging.
+    Use type for: Defining union types, intersection types, primitive aliases, tuples, or when you need the full power of type expressions.
 **Extending an interface**
         `interface Animal {
             name: string;
@@ -82,7 +95,18 @@
 
         type Window = {
             ts: TypeScriptAPI;
-        }` 
+        }`
+
+**What are "Type Guards" in TypeScript and why are they useful? Provide an example.**
+Type Guards are mechanisms that allow you to narrow down the type of a variable within a conditional block. They are useful because they enable TypeScript's static analysis to understand that a variable, after passing a specific check, is of a more specific type. This allows you to safely access properties or methods that are only available on the narrowed type, preventing runtime errors.
+**Common Type Guards:**
+    > typeof Type Guard: Checks the primitive type of a variable ('string', 'number', 'boolean', 'symbol', 'undefined', 'object', 'function', 'bigint').
+    > instanceof Type Guard: Checks if an object is an instance of a particular class.
+    > in Operator Type Guard: Checks if a property exists on an object.
+    > User-Defined Type Guards: Functions that return a type predicate (e.g., value is Type).
+    > Truthiness Check: Simple checks for truthy/falsy values can sometimes act as type guards (e.g., if (value)).
+
+
 
 **Touple:** 
     a tuple is a special type of array that has a fixed number of elements, and the type of each element is known and predefined.This allows you to store a collection of values of different types in a specific order.
