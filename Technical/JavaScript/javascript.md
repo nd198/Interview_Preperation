@@ -159,14 +159,14 @@
 
     **A Manually Curried Function**
         `function curriedMultiply(a) {
-        // Returns a function that "remembers" `a` (this is a closure)
-        return function(b) {
-            // Returns a function that "remembers" both `a` and `b`
-            return function(c) {
-            // Now it has all arguments and can perform the calculation
-            return a * b * c;
+            // Returns a function that "remembers" `a` (this is a closure)
+            return function(b) {
+                // Returns a function that "remembers" both `a` and `b`
+                return function(c) {
+                // Now it has all arguments and can perform the calculation
+                return a * b * c;
+                }
             }
-        }
         }
 
         // You call it as a chain of functions
@@ -246,4 +246,67 @@
 
     console.log("\nMy Manager's items:", myManager.getItems());    // Output: [ 'Apples', 'Bananas' ]
     console.log("Your Manager's items:", yourManager.getItems()); // Output: [ 'Laptop', 'Mouse' ]  `      
+**Memoization**
+Memoization in JavaScript is an optimization technique that significantly improves the performance of functions by caching the results of "expensive" function calls. When a memoized function is called with the same arguments again, instead of re-executing the entire computation, it returns the pre-computed result from its cache
 
+**How Memoization Works**
+    > The core idea behind memoization is to store the output of a function based on its input arguments.
+    > First Call: When a memoized function is called for the first time with a particular set of arguments, it performs its regular computation.
+    > Caching the Result: After computing the result, it stores this result in a cache (often an object or a Map). The arguments used for the call serve as the "key" to retrieve this stored result.
+    > Subsequent Calls: If the same function is called again with the identical arguments, the function first checks its cache.
+    > Returning Cached Result: If a result for those arguments is found in the cache, it's immediately returned without performing the computation again, saving time and resources. If not, the function computes the result, stores it, and then returns it.
+    > This process is often implemented using closures in JavaScript, where the cache is maintained within the scope of the memoized function[2].
+**Benefits of Memoization**
+    > Performance Improvement: The primary benefit is speeding up applications by avoiding redundant computations, especially for functions that are computationally intensive or frequently called[1][2][5].
+    > Reduced Recalculations: It prevents the same calculations from being performed over and over, leading to more efficient code[5].
+    > Enhanced User Experience: Faster execution times can result in a more responsive and fluid user experience in web applications.
+**Use Cases for Memoization**
+    Memoization is particularly useful in situations where:
+    > Functions have expensive computations: If a function involves heavy calculations, complex algorithms, or extensive data processing, memoization can save significant processing time by storing and reusing results[1][3].
+    > Recursive Algorithms: Classic examples like the Fibonacci sequence or factorial calculations often involve repeated calculations for the same subproblems. Memoization can drastically improve their performance by caching intermediate results[1][2][5][9][10].
+    > API Calls or Data Fetching: Caching responses from API calls or database queries with the same parameters can reduce network traffic and speed up data retrieval times[1].
+    > Data Transformations: Caching the results of costly data transformations can be beneficial when the same transformations are applied repeatedly[7].
+    > Frontend Frameworks (e.g., React): In frameworks like React, memoization (e.g., using React.memo, useCallback, useMemo hooks) can prevent unnecessary re-renders of components or re-execution of expensive functions as long as their inputs (props or dependencies) remain the same[2][7].
+
+        `console.log("Hello, World!");
+        function memoize(fn) {
+        const cache = {}; // The cache to store results
+
+        return function(...args) {
+            // Create a unique key from the function arguments
+            // JSON.stringify is a common way to handle various argument types
+            console.log("arrrrrrrrrrrrrr==========", args)
+            const key = JSON.stringify(args); 
+
+            // If the result is already in the cache, return it
+            if (cache[key]) {
+            console.log('Fetching from cache for:', key);
+            return cache[key];
+            }
+
+            // Otherwise, execute the original function
+            console.log('Calculating result for:', key);
+            const result = fn.apply(this, args); // Use apply to pass arguments as an array and preserve 'this'
+
+            // Store the result in the cache before returning
+            cache[key] = result;
+            return result;
+        };
+        }
+
+        // An example of an "expensive" function (e.g., calculating Fibonacci)
+        function calculateFibonacci(n) {
+        console.log("nnnnnnnnnnnnnnn==========", n)
+        if (n <= 1) {
+            return n;
+        }
+        return calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
+        }
+
+        // Create a memoized version of the Fibonacci function
+        const memoizedFibonacci = memoize(calculateFibonacci);
+
+        console.log(memoizedFibonacci(10)); // Calculates and caches [1, 1]
+        console.log(memoizedFibonacci(10)); // Fetches from cache [1, 1]
+        console.log(memoizedFibonacci(15)); // Calculates and caches [1]
+        console.log(memoizedFibonacci(10)); // Fetches from cache [1]    `

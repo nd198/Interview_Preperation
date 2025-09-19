@@ -43,10 +43,25 @@
     > More Versatile: Can describe not only object shapes but also primitives, union types, intersection types, tuples, and mapped types.
     > Extending/Intersection: Type aliases can be combined using intersection types (&).
     **interface:**
+    An interface in TypeScript serves as a "syntactical contract" that defines the expected structure or "shape" of an object. It outlines the properties and method signatures an object should have, without providing any implementation details. Interfaces are a compile-time construct, primarily used for type-checking and enhancing code readability and maintainability.
     > Declaration Merging: Interfaces can be declared multiple times in the same scope, and TypeScript will merge them into a single interface. This is particularly useful for augmenting existing library types.
     > Implementation with Classes: Interfaces can be implemented by classes, ensuring that the class adheres to a specific structure.
     > Extending: Interfaces can extend other interfaces.
     > Primarily for Object Shapes: Historically, interfaces were the primary way to describe object shapes.
+    **Key Characteristics:**
+        > Define Object Shapes: They specify the names and types of properties and methods that an object must contain.
+        > No Implementation: Interfaces cannot contain implementation logic for methods or properties; they only define signatures.
+        > Optional Properties: You can mark properties as optional using a ? symbol.
+        > Readonly Properties: Properties can be marked readonly to prevent modification after initial assignment.
+        > Extensibility: Interfaces can extend other interfaces, allowing for reuse and the creation of more complex types.
+        > Class Implementation: Classes can implement interfaces, ensuring they adhere to the defined contract.
+        `interface User {
+            id: number;
+            name: string;
+            email?: string; // Optional property
+            readonly createdAt: Date; // Readonly property
+            greet(message: string): void;
+        }`
     **When to use which:**
     Use interface for: Defining the shape of objects that might be extended or implemented by classes, or when you need declaration merging.
     Use type for: Defining union types, intersection types, primitive aliases, tuples, or when you need the full power of type expressions.

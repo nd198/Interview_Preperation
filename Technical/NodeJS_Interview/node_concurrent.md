@@ -6,7 +6,6 @@ The Cluster pattern allows you to fork your app into multiple child processes th
     `const cluster = require('cluster');
     const http = require('http');
     const numCPUs = require('os').cpus().length;
-
     if (cluster.isMaster) {
     console.log(`Master ${process.pid} is running`);
     for (let i = 0; i < numCPUs; i++) {

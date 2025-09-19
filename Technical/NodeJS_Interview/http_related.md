@@ -294,7 +294,17 @@ This is the most "academically correct" RESTful approach. It uses the standard A
     https://newsletter.systemdesign.one/p/how-to-store-passwords-in-database
 
 
+**What is CORS:-**
+CORS (Cross-Origin Resource Sharing)
+CORS is a security rule in web browsers that stops a website from requesting data from a server on a different domain unless that server gives explicit permission.
+It's a security feature, not an error. CORS is your browser protecting you.
+It's enforced by the browser. The server doesn't block anything; the browser does.
+It's fixed on the server. The server must send the right Access-Control-Allow-Origin header in its response.
 
+const corsOptions = {
+  origin: 'httpsa://my-frontend.com', // Your frontend's origin
+  optionsSuccessStatus: 200 // For legacy browser support
+};
 
-
+app.use(cors(corsOptions)); // Enable CORS with specific options
 
