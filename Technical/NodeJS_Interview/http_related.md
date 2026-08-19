@@ -1,3 +1,6 @@
+**Handshake**
+https://medium.com/@jacksebben.unicyclist/tls-transport-layer-security-fefcfc5f55d0
+
 **What is a REST API**
 
 **Describe the concept of Idempotency in the context of REST APIs**

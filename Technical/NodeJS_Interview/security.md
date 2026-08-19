@@ -1,0 +1,2 @@
+**What is PKI**
+PKI stands for Public Key Infrastructure. In simple terms, it's a system designed to create, manage, and distribute digital certificates that verify identities and enable secure communication on networks like the internet.
